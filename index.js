@@ -1,0 +1,39 @@
+
+ export const People = [
+    {
+        name:"Roman",
+         age:32,
+         isMarried:true,
+         hasCar:true,
+    },
+    {
+        name:"Vitaliy",
+         age:42,
+         isMarried:false,
+         hasCar:true,
+    },
+    {
+        name:"Olena",
+         age:22,
+         isMarried:true,
+         hasCar:false,
+    },
+    {
+        name:"Oksana",
+         age:52,
+         isMarried:true,
+         hasCar:true,
+    },
+    {
+        name:"Valera",
+         age:32,
+         isMarried:false,
+         hasCar:false,
+    },
+    {
+        name:"Alex",
+         age:12,
+         isMarried:false,
+         hasCar:true,
+    },
+]
