@@ -2,7 +2,7 @@
 
 Проект представляет собой веб-приложение для загрузки файлов с **поддержкой drag & drop** и стандартного выбора через input.  
 Подходит для демонстрации функциональности загрузки файлов с отображением информации о них.
-
+( https://romanbarinov84.github.io/progressiveLoadFiles-with-drag-drop/)
 
 ## PHOTO
 <img width="1920" height="1080" alt="Снимок экрана (27)" src="https://github.com/user-attachments/assets/8b91860a-66b6-482f-8762-45bc70f9ade8" />
