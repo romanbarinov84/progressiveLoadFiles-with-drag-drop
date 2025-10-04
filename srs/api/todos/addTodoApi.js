@@ -1,9 +1,7 @@
-import { host } from "../main.js";
+import { host } from "../host.js";
 
 
 export async function addTodo(newTodo) {
- 
-
   try {
     const response = await fetch(`${host}`, {
       method: "POST",
@@ -19,7 +17,7 @@ export async function addTodo(newTodo) {
       );
     }
 
-    return await response.json()
+    return await response.json();
   } catch (error) {
     console.log("неудалось добавить задачу");
     throw error;

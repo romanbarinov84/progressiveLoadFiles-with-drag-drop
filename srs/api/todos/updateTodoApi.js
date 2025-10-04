@@ -1,7 +1,6 @@
+import { host } from "../host.js";
 
- import { host } from "../main.js";
-
- export async function updateTodo(id, newText) {
+export async function updateTodo(id, newText) {
   try {
     const response = await fetch(`${host}/${id}`, {
       method: "PUT",
@@ -14,12 +13,11 @@
       throw new Error(`Неудалось добавить текст : status ${response.status}`);
     }
 
-    
     console.log("Текст задачи добавлен");
-     
-    return true
+
+    return true;
   } catch (error) {
     console.error("текст не добавлен");
-    throw error
+    throw error;
   }
 }

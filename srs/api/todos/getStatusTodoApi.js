@@ -1,9 +1,6 @@
-import { host } from "../main.js";
+import { host } from "../host.js";
 
-
-
-
- export  async function toggleTodoStatus(id, completed) {
+export async function toggleTodoStatus(id, completed) {
   try {
     const response = await fetch(`${host}/${id}`, {
       method: "PUT",
@@ -18,9 +15,9 @@ import { host } from "../main.js";
 
     console.log("Задача изменена");
 
-    return true
+    return true;
   } catch (error) {
     console.error("статус задачи необновлен");
-    throw Error
+    throw Error;
   }
 }

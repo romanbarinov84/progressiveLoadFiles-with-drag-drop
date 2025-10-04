@@ -1,21 +1,16 @@
-import { getTodos } from "./api/getTodoApi.js";
-import { toggleTodoStatus } from "./api/getStatusTodoApi.js";
-import { deleteTodo } from "./api/deleteTodoApi.js";
-import { updateTodo } from "./api/updateTodoApi.js";
-import { addTodo } from "./api/addTodoApi.js";
-import { updateTaskOrderOnServer } from "./api/updateTaskOrderApi.js";
-import { deleteCompletedTodos } from "./api/deleteCompletedTodosApi.js";
+import { getTodos,toggleTodoStatus,deleteTodo,updateTodo,updateTaskOrderOnServer,deleteCompletedTodos,addTodo} from "./api/index.js";
+import { hideLoader, showError, showLoader } from "./utils/helpers.js";
+
 
 const container = document.getElementById("posts-container");
 const taskInput = document.getElementById("task-input");
 const addButton = document.getElementById("add-button");
 const downLoadButton = document.querySelector(".button-download");
-const overlay = document.getElementById("overlay");
 const deleteCompletedButton = document.getElementById(
   "delete-completed-button"
 );
 
-export const host = "https://67d67177286fdac89bc1ec9d.mockapi.io/Carts";
+
 
 async function loadData() {
   showLoader();
@@ -77,7 +72,7 @@ function renderData(todos) {
     deleteButton.classList.add("button-function");
 
     const deleteIcon = document.createElement("img");
-    deleteIcon.src = "images/deleteButton.png";
+    deleteIcon.src = "assets/images/deleteButton.png";
     deleteIcon.alt = "удалить";
     deleteIcon.title = "удалить";
 
@@ -96,7 +91,7 @@ function renderData(todos) {
 
     const updateButton = document.createElement("button");
     const updateIcon = document.createElement("img");
-    updateIcon.src = "images/updateButton.png";
+    updateIcon.src = "assets/images/updateButton.png";
     updateIcon.alt = "обновить";
     updateIcon.title = "обновить";
 
@@ -200,12 +195,8 @@ deleteCompletedButton.addEventListener("click", async () => {
   }
 });
 
-function showLoader() {
-  overlay.style.display = "flex";
-}
-function hideLoader() {
-  overlay.style.display = "none";
-}
+ showLoader();
+ hideLoader();
 
 // функция перетаскивания
 function addDragAndDropListeners(todoElement, todo) {
@@ -270,13 +261,4 @@ async function updateTaskOrder() {
   }
 }
 
-function showError(message) {
-  const icon = message === "Задач нет" ? "info" : "error";
-  const title = message === "Задач нет" ? "информация" : "Ощибка";
-  Swal.fire({
-    title,
-    text: message,
-    icon,
-    showConfirmButton: true,
-  });
-}
+showError()

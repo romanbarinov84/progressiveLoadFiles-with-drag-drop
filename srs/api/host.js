@@ -1,0 +1,1 @@
+export const host = "https://67d67177286fdac89bc1ec9d.mockapi.io/Carts";

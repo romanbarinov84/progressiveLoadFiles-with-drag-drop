@@ -1,6 +1,4 @@
-
-
-import { host } from "../main.js";
+import { host } from "../host.js";
 
 export async function deleteTodo(id) {
   try {
@@ -11,11 +9,11 @@ export async function deleteTodo(id) {
       throw new Error(`Неудалось удалить : status ${response.status}`);
     }
 
-    console.log("Задача удалена" );
-     
-     return true
+    console.log("Задача удалена");
+
+    return true;
   } catch (error) {
     console.error("Неудалось удалить задачу", error.message);
-    throw error
+    throw error;
   }
 }
