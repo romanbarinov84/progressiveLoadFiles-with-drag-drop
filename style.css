@@ -1,3 +1,4 @@
+/* Общие стили */
 * {
   margin: 0;
   padding: 0;
@@ -5,153 +6,196 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.form-upload {
-  display: inline-flex;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   min-height: 100vh;
-  padding: 16px;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.upload-zone__dragover {
-  background-color: #593273;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
+  display: none; /* По умолчанию скрыт */
   justify-content: center;
-  width: 80%;
-  height: 300px;
-  padding: 16px;
-  border-radius: 10px;
-  border: 2px dashed #ddd;
-  font-size: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.upload-zone__dragover:hover,
-.upload-zone__dragover.active {
-  opacity: 0.8;
-}
-
-.upload-loader__image {
-  width: 100px;
-}
-
-.upload-zone__text {
-  text-align: center;
-}
-
-.form-upload__label {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  z-index: 1000; /* overlay поверх всех элементов */
 }
 
-.form-upload__title {
-  font-size: 16px;
-  font-weight: 500;
-  font-family: Arial, sans-serif;
+/* Спиннер */
+#spinner {
+  border: 4px solid #f3f3f3; /* Светлый круг */
+  border-top: 4px solid #3498db; /* Синий круг */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Анимация вращения */
 }
 
-.form-upload__label {
-  margin-top: 20px;
-  padding: 8px 15px;
-  background-color: #fff;
-  color: #000;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.form-upload__label:hover {
-  background-color: #0056b3;
-  color: #fff;
-}
-
-.form-upload__title {
-  font-size: 16px;
-}
-
-.form-upload__input {
-  display: none;
-}
-
-/* Стили для блока с информацией о файлах */
-.file-info {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  display: none;
-}
-
-.file-info h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.file-info ul {
-  list-style: none;
-  padding: 0;
-}
-
-.file-info li {
-  margin: 5px 0;
-}
-
-.file-info li strong {
-  font-weight: bold;
-}
-
-/* Анимация мигания */
-@keyframes blink {
-  0%,
+/* Анимация вращения */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
-    background-color: #3dbf60;
-  }
-  50% {
-    background-color: #02821a; /* Цвет мигания */
+    transform: rotate(360deg);
   }
 }
 
-.files-sent {
-  animation: blink 1s ease-in-out 3;
-  display: none;
+.icons{
+    width: 24px;
+    height: 44px;
 }
 
-/* Стили для кнопки "Отправить" */
-button,
-.files-sent {
-  width: 200px;
-  margin-top: 8px;
-  padding: 8px 15px;
+img{
+  width: 24px;
+  height: 24px;
+ 
+}
+
+.input-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Контейнер для ввода задачи */
+#task-input {
+  width: 300px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#task-input:focus {
+  border-color: #007bff;
+}
+
+#add-button {
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#add-button:hover {
+  background-color: #089d17;
+}
+
+.icons {
+  width: 48px;
+}
+
+/* Кнопки */
+.button-download,
+#delete-completed-button {
+  padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-size: 18px;
-  font-family: Arial, sans-serif;
-  font-weight: 500;
-  text-align: center;
-  background-color: #3dbf60;
-  color: #fff;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button {
-  background-color: #c4c4c4;
-  color: #000;
-  cursor: pointer;
-  transition: all 0.3s ease;
+#delete-completed-button{
+  background-color: red;
   display: none;
 }
 
-button:hover {
+#delete-completed-button:hover{
+  background-color: rgb(246, 14, 14);
+  transform: translateY(-2px);
+}
+
+#delete-completed-button:active{
+  background-color: rgb(248, 25, 25);
+  transform: translateX(-2px);
+}
+
+.button-download:hover {
   background-color: #0056b3;
-  color: #fff;
+  transform: translateY(-2px);
+}
+
+.button-download:active {
+  transform: translateY(0);
+}
+
+/* Контейнер для задач */
+#posts-container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Стили для каждой задачи */
+.todo {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.todo:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.todo p {
+  margin: 8px 0;
+  color: #333;
+}
+
+/* Чекбокс */
+.todo input[type="checkbox"] {
+  margin-right: 12px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/* Кнопки внутри задачи */
+.button-function {
+  border: none;
+  margin-right: 8px;
+  padding: 8px 16px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-function:hover {
+  transform: scale(1.1);
+}
+
+.todo.dragging{
+  opacity: 0.4;
+  background-color: #fefefe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.todo{
+  transition: all 0.3s;
 }
