@@ -1,5 +1,5 @@
 import { getTodos,toggleTodoStatus,deleteTodo,updateTodo,deleteCompletedTodos,addTodo} from "./api/index.js";
-import { initDragAndDropListeners } from "./components/index.js";
+import { initDragAndDropListeners,initDeleteCompleted } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 
 
@@ -7,12 +7,12 @@ import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 const taskInput = document.getElementById("task-input");
 const addButton = document.getElementById("add-button");
 const downLoadButton = document.querySelector(".button-download");
-const deleteCompletedButton = document.getElementById(
+export const deleteCompletedButton = document.getElementById(
   "delete-completed-button"
 );
 
 
-async function loadData() {
+export async function loadData() {
   showLoader();
   try {
     const todos = await getTodos();
@@ -170,31 +170,7 @@ taskInput.addEventListener("keydown", (event) => {
 
 downLoadButton.addEventListener("click", loadData);
 
-deleteCompletedButton.addEventListener("click", async () => {
-  const result = await Swal.fire({
-    title: "Вы уверенны?",
-    text: "Все выполненые задачи будут удаленны!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Да удалить!",
-    cancelButtonText: "No, cancel!",
-  });
-
-  if (!result.isConfirmed) {
-    return;
-  } else {
-    try {
-      await deleteCompletedTodos(container);
-      await loadData();
-    } catch (error) {
-      console.error(error.message);
-      showError("неудалось удалить задачу");
-    }
-  }
-});
-
+initDeleteCompleted();
 
 
 
