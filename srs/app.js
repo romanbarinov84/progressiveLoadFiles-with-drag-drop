@@ -1,5 +1,5 @@
-import { getTodos,toggleTodoStatus,deleteTodo} from "./api/index.js";
-import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask, initDownload } from "./components/index.js";
+import { getTodos,deleteTodo} from "./api/index.js";
+import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask, initDownload, changeStatus } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 
 
@@ -44,16 +44,9 @@ function renderData(todos) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkBox";
     checkBox.checked = todo.completed;
-
-    checkBox.addEventListener("change", async () => {
-      try {
-        await toggleTodoStatus(todo.id, checkBox.checked);
-        await loadData();
-      } catch (error) {
-        console.error("Ошибка изменения статуса");
-        showError("неудалось изменить данные");
-      }
-    });
+    
+    changeStatus(todo,checkBox);
+  
     const textElement = document.createElement("p");
     textElement.textContent = todo.text;
 
