@@ -1,11 +1,11 @@
-import { getTodos,toggleTodoStatus,deleteTodo,updateTodo,deleteCompletedTodos,addTodo} from "./api/index.js";
-import { initDragAndDropListeners,initDeleteCompleted } from "./components/index.js";
+import { getTodos,toggleTodoStatus,deleteTodo,updateTodo} from "./api/index.js";
+import { initDragAndDropListeners,initDeleteCompleted, initAddTodo } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 
 
- export const container = document.getElementById("posts-container");
-const taskInput = document.getElementById("task-input");
-const addButton = document.getElementById("add-button");
+export const container = document.getElementById("posts-container");
+export const taskInput = document.getElementById("task-input");
+export const addButton = document.getElementById("add-button");
 const downLoadButton = document.querySelector(".button-download");
 export const deleteCompletedButton = document.getElementById(
   "delete-completed-button"
@@ -135,41 +135,11 @@ function renderData(todos) {
   });
 }
 
-async function addNewTodo() {
-  const newTodoText = taskInput.value.trim();
 
-  if (!newTodoText) {
-    alert("введите текст задачи");
-    return;
-  }
 
-  const newTodo = {
-    text: newTodoText,
-    createdAt: Date.now(),
-    completed: false,
-  };
-
-  try {
-    await addTodo(newTodo);
-
-    console.log("Задача добавленна");
-    taskInput.value = "";
-    await loadData();
-  } catch (error) {
-    console.log("неудалось добавить задачу");
-  }
-}
-
-addButton.addEventListener("click", addNewTodo);
-
-taskInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    addNewTodo();
-  }
-});
 
 downLoadButton.addEventListener("click", loadData);
-
+initAddTodo();
 initDeleteCompleted();
 
 
