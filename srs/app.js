@@ -1,5 +1,5 @@
 import { getTodos,toggleTodoStatus,deleteTodo,updateTodo} from "./api/index.js";
-import { initDragAndDropListeners,initDeleteCompleted, initAddTodo } from "./components/index.js";
+import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 
 
@@ -96,30 +96,9 @@ function renderData(todos) {
     updateIcon.title = "обновить";
 
     updateButton.append(updateIcon);
-    updateButton.addEventListener("click", async () => {
-      const { value: newText } = await Swal.fire({
-        title: "Редактирование задачи",
-        input: "text",
-        inputLabel: "Введите текст новой задачи",
-        inputValue: todo.text,
-        showCancelButton: true,
-        confirmButtonText: "Сохранить",
-        cancelButtonText: "Отмена",
-        inputValidator: (value) => {
-          if (!value) {
-            return "Поле не может быть пустым";
-          }
-        },
-      });
-
-      if (newText) {
-        try {
-          await updateTodo(todo.id, newText);
-          await loadData();
-        } catch (error) {
-          showError("неудалось обновить задачу");
-        }
-      }
+    updateButton.addEventListener("click",() => {
+     
+       updateTask(todo);
     });
 
     todoElement.append(
