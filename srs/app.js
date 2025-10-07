@@ -1,12 +1,11 @@
-import { getTodos,toggleTodoStatus,deleteTodo,updateTodo} from "./api/index.js";
-import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask } from "./components/index.js";
+import { getTodos,toggleTodoStatus,deleteTodo} from "./api/index.js";
+import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask, initDownload } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 
 
 export const container = document.getElementById("posts-container");
 export const taskInput = document.getElementById("task-input");
 export const addButton = document.getElementById("add-button");
-const downLoadButton = document.querySelector(".button-download");
 export const deleteCompletedButton = document.getElementById(
   "delete-completed-button"
 );
@@ -117,9 +116,9 @@ function renderData(todos) {
 
 
 
-downLoadButton.addEventListener("click", loadData);
+
 initAddTodo();
 initDeleteCompleted();
-
+initDownload();
 
 
