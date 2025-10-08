@@ -1,7 +1,13 @@
-import { getTodos,deleteTodo} from "./api/index.js";
-import { initDragAndDropListeners,initDeleteCompleted, initAddTodo, updateTask, initDownload, changeStatus } from "./components/index.js";
+import { getTodos, deleteTodo } from "./api/index.js";
+import {
+  initDragAndDropListeners,
+  initDeleteCompleted,
+  initAddTodo,
+  updateTask,
+  initDownload,
+  changeStatus,
+} from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
-
 
 export const container = document.getElementById("posts-container");
 export const taskInput = document.getElementById("task-input");
@@ -9,7 +15,6 @@ export const addButton = document.getElementById("add-button");
 export const deleteCompletedButton = document.getElementById(
   "delete-completed-button"
 );
-
 
 export async function loadData() {
   showLoader();
@@ -44,9 +49,9 @@ function renderData(todos) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkBox";
     checkBox.checked = todo.completed;
-    
-    changeStatus(todo,checkBox);
-  
+
+    changeStatus(todo, checkBox);
+
     const textElement = document.createElement("p");
     textElement.textContent = todo.text;
 
@@ -88,9 +93,8 @@ function renderData(todos) {
     updateIcon.title = "обновить";
 
     updateButton.append(updateIcon);
-    updateButton.addEventListener("click",() => {
-     
-       updateTask(todo);
+    updateButton.addEventListener("click", () => {
+      updateTask(todo);
     });
 
     todoElement.append(
@@ -102,16 +106,10 @@ function renderData(todos) {
     );
 
     container.append(todoElement);
-    initDragAndDropListeners(todoElement, todo,container);
+    initDragAndDropListeners(todoElement, todo, container);
   });
 }
-
-
-
-
 
 initAddTodo();
 initDeleteCompleted();
 initDownload();
-
-
