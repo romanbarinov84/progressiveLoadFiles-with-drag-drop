@@ -7,3 +7,5 @@ export * from "./ui/updateTask.js"
 export * from "./inits/initDownLoad.js"
 export * from "./inits/changeStatus.js"
 
+export * from "./auth/signUp.js";
+export * from "./auth/signIn.js";
