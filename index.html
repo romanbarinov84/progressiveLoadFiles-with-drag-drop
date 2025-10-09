@@ -8,39 +8,47 @@
     <title>Document</title>
   </head>
   <body>
-   <div id="overlay">
+    <div id="overlay">
       <div id="spinner"></div>
     </div>
 
+    <form id="signup-form">
+      <h2>Registration</h2>
+      <input type="email" id="signup-email" placeholder="email" required />
+      <input
+        type="password"
+        id="signup-password"
+        placeholder="password"
+        required
+      />
+      <button type="submit">register</button>
+      <button id="signIn" type="button">войти</button>
+    </form>
 
-   <form id="signup-form">
-    <h2>Registration</h2>
-    <input type="email" id="signup-email" placeholder="email" required>
-    <input type="password" id="signup-password" placeholder="password" required>
-    <button type="submit">register</button>
-   </form>
+    <form id="signin-form">
+      <h2>Autorization</h2>
+      <input type="email" id="signin-email" placeholder="email" required />
+      <input
+        type="password"
+        id="signin-password"
+        placeholder="password"
+        required
+      />
+      <button type="submit">Enter</button>
+    </form>
 
-   <form id="signin-form">
-    <h2>Autorization</h2>
-    <input type="email" id="signin-email" placeholder="email" required>
-    <input type="password" id="signin-password" placeholder="password" required>
-    <button type="submit">Enter</button>
-   </form>
-
-    <div class="input-block">
-      <input type="text" id="task-input" placeholder="Введите задачу" />
-      <button id="add-button">
-        <img  src="assets/images/ADDbutton.png" class="icons" />
-      </button>
-    </div>
-
-    <div>
-      <button id="button" class="button-download">Получить задачи</button>
+    <div id="task-container">
+      <div class="input-block">
+        <input type="text" id="task-input" placeholder="Введите задачу" />
+        <button id="add-button">
+          <img src="assets/images/ADDbutton.png" class="icons" />
+        </button>
+        
+      </div>
     </div>
 
     <div id="posts-container"></div>
     <button id="delete-completed-button">Удалить все выполненые задачи</button>
     <script src="./srs/app.js" type="module"></script>
-    
   </body>
 </html>
