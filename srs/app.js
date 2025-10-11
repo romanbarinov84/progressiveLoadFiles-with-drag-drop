@@ -4,10 +4,13 @@ import {
   initDeleteCompleted,
   initAddTodo,
   updateTask,
-  initDownload,
   changeStatus,
 } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
+import { getUserInfo } from "./utils/authHelper.js";
+import { initApp } from "./init.js";
+
+
 
 export const container = document.getElementById("posts-container");
 export const taskInput = document.getElementById("task-input");
@@ -17,9 +20,11 @@ export const deleteCompletedButton = document.getElementById(
 );
 
 export async function loadData() {
-  showLoader();
-  try {
-    const todos = await getTodos();
+ 
+  try { 
+    showLoader();
+    const {uid,token} = await getUserInfo();
+    const todos = await getTodos(uid,token);
     renderData(todos);
   } catch (error) {
     console.error("данные не получены", error);
@@ -112,4 +117,9 @@ function renderData(todos) {
 
 initAddTodo();
 initDeleteCompleted();
-initDownload();
+initApp()
+
+
+
+
+
