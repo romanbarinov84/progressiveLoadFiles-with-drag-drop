@@ -27,11 +27,11 @@ signinForm.addEventListener("submit",async (event) => {
 
 })
 
-function showTasksBlock(){
+ export function showTasksBlock(){
    taskContainer.style.display = "block"
    loadData()
 }
 
-function hideSigninForm(){
+ export function hideSigninForm(){
     signinForm.style.display = "none";
 }

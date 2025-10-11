@@ -63,6 +63,34 @@ img{
  
 }
 
+input {
+  margin: 40px 25px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #00aaff; 
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, #00aaff 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #f5f8f9; 
+}
+
+button{
+   padding: 8px 30px;
+  background: rgba(255,255,255,0.8);
+  color: #0560e0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  text-shadow: 5px 1px 2px #fff;
+  cursor: pointer;
+}
+
 .input-block {
   display: flex;
   flex-direction: row;
@@ -71,6 +99,14 @@ img{
   margin-bottom: 10px;
 }
 
+#task-container{
+  display: none;
+}
+
+#signin-form,
+#signup-form{
+  display: none;
+}
 /* Контейнер для ввода задачи */
 #task-input {
   width: 300px;
@@ -199,3 +235,4 @@ img{
 .todo{
   transition: all 0.3s;
 }
+

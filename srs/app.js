@@ -4,11 +4,13 @@ import {
   initDeleteCompleted,
   initAddTodo,
   updateTask,
-  initDownload,
   changeStatus,
 } from "./components/index.js";
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 import { getUserInfo } from "./utils/authHelper.js";
+import { initApp } from "./init.js";
+
+
 
 export const container = document.getElementById("posts-container");
 export const taskInput = document.getElementById("task-input");
@@ -115,13 +117,9 @@ function renderData(todos) {
 
 initAddTodo();
 initDeleteCompleted();
+initApp()
 
 
 
-const signupForm = document.getElementById("signup-form");
-const signinForm = document.getElementById("signin-form");
-const taskContainer = document.getElementById("task-container");
 
-signinForm.style.display = "none";
-signupForm.style.display = "block";
-taskContainer.style.display = "none";
+

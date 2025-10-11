@@ -23,6 +23,7 @@ export async function deleteCompletedTodos(container) {
           `не удалось удалить список задач.Статус: ${deleteResponse.status}`
         );
       }
+      
     }
     return true;
   } catch (error) {

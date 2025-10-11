@@ -35,9 +35,12 @@ signupForm.addEventListener("submit",async (event) => {
 
 })
 
-function hideSignupForm(){
+ export function hideSignupForm(){
     signupForm.style.display = "none";
 }
-function showSigninForm(){
+export function showSigninForm(){
+    signinForm.style.display = "block";
+}
+export function showSignupForm(){
     signinForm.style.display = "block";
 }
