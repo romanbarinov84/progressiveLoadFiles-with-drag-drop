@@ -63,33 +63,12 @@ img{
  
 }
 
-input {
-  margin: 40px 25px;
-  width: 200px;
-  display: block;
-  border: none;
-  padding: 10px 0;
-  border-bottom: 1px solid #00aaff; 
-  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, #00aaff 4%);
-  background-position: -200px 0;
-  background-size: 200px 100%;
-  background-repeat: no-repeat;
-  color: #f5f8f9; 
+
+
+#add-button{
+  background-color: transparent;
 }
 
-button{
-   padding: 8px 30px;
-  background: rgba(255,255,255,0.8);
-  color: #0560e0;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 16px;
-  border: 0;
-  border-radius: 4px;
-  text-shadow: 5px 1px 2px #fff;
-  cursor: pointer;
-}
 
 .input-block {
   display: flex;
@@ -124,16 +103,12 @@ button{
 
 #add-button {
   border: none;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-#add-button:hover {
-  background-color: #089d17;
-}
 
 .icons {
   width: 48px;
@@ -236,3 +211,21 @@ button{
   transition: all 0.3s;
 }
 
+.logOut-button {
+  background-color: #ff4b4b;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* плавный переход */
+}
+
+.logOut-button:hover {
+  background-color: #ff7070; /* чуть светлее при наведении */
+  transform: scale(1.05); /* лёгкое увеличение */
+}

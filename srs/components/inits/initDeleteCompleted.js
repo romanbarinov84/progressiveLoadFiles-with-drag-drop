@@ -1,21 +1,14 @@
 import { deleteCompletedTodos } from "../../api/index.js";
 import { container, deleteCompletedButton, loadData } from "../../app.js";
-import { showError } from "../../utils/helpers.js";
+import { showError } from "../../utils/notification.js";
+import { showConfirmation } from "../../utils/notification.js";
 
 export function initDeleteCompleted() {
   deleteCompletedButton.addEventListener("click", async () => {
-    const result = await Swal.fire({
-      title: "Вы уверенны?",
-      text: "Все выполненые задачи будут удаленны!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Да удалить!",
-      cancelButtonText: "No, cancel!",
-    });
+    const isConfirmed = await showConfirmation("все выполненные задачи будут удалены!Вы уверенны?")
+    
 
-    if (!result.isConfirmed) {
+    if (!isConfirmed) {
       return;
     } else {
       try {
@@ -23,7 +16,7 @@ export function initDeleteCompleted() {
         await loadData();
       } catch (error) {
         console.error(error.message);
-        showError("неудалось удалить задачу");
+        showError("неудалось удалить  задачу");
       }
     }
   });
