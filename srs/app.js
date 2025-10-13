@@ -9,8 +9,7 @@ import {
 import { hideLoader, showError, showLoader } from "./utils/helpers.js";
 import { getUserInfo } from "./utils/authHelper.js";
 import { initApp } from "./init.js";
-
-
+import { showInfo } from "./utils/notification.js";
 
 export const container = document.getElementById("posts-container");
 export const taskInput = document.getElementById("task-input");
@@ -20,20 +19,22 @@ export const deleteCompletedButton = document.getElementById(
 );
 
 export async function loadData() {
- 
-  try { 
+  try {
     showLoader();
-    const {uid,token} = await getUserInfo();
-    const todos = await getTodos(uid,token);
+    const { uid, token } = await getUserInfo();
+    const todos = await getTodos(uid, token);
+
+    if (todos.length === 0) {
+      showInfo("У вас пока нет задач");
+    } else {
+      renderData(todos);
+    }
+
     renderData(todos);
   } catch (error) {
     console.error("данные не получены", error);
 
-    if (error.message === "Задач нет") {
-      showError("Задач нет");
-    } else {
-      showError("неудалось получить данные");
-    }
+   
   } finally {
     hideLoader();
   }
@@ -117,9 +118,4 @@ function renderData(todos) {
 
 initAddTodo();
 initDeleteCompleted();
-initApp()
-
-
-
-
-
+initApp();

@@ -1,6 +1,6 @@
 import { deleteTodo } from "../../api/index.js";
 import { loadData } from "../../app.js";
-import { showError } from "../../utils/helpers.js";
+import { showError } from "../../utils/notification.js";
 
 
 export async function initDelete(todo){
