@@ -33,7 +33,7 @@ signupForm.addEventListener("submit", async (event) => {
     await sendEmailVerification(user);
 
     console.log("Registration has been completed successfully", user.uid);
-    showSuccess("Registration has been completed successfully");
+    showSuccess("Для входа необходимо верифицировать email.Проверте свою почту");
 
     showSigninForm();
     hideSignupForm();
@@ -50,5 +50,5 @@ export function showSigninForm() {
   signinForm.style.display = "block";
 }
 export function showSignupForm() {
-  signinForm.style.display = "block";
+  signupForm.style.display = "block";
 }
